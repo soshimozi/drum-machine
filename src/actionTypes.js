@@ -1,1 +1,2 @@
+export const START_STOP_BUTTON_CLICK = "START_STOP_BUTTON_CLICK";
 export const TICK = "TICK";

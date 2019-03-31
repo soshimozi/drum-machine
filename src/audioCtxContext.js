@@ -5,7 +5,7 @@ let audioCtx = undefined;
 let clock = undefined;
 
 const { Provider, Consumer } = React.createContext({
-  getAuctioContext: () => audioCtx,
+  getAudioContext: () => audioCtx,
   getClock: () => clock,
   requestInit: () => {
     if(audioCtx == null || clock == null) {

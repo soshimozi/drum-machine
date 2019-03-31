@@ -8,6 +8,21 @@ import Loadable from "react-loadable";
 
 import store from "./store";
 
+
+// Add a warning to Firefox users due to a buggy AudioParam implementation
+import browser from "bowser";
+
+import AppLayout from "./layouts/app";
+
+require("./globalStyles/reset.css");
+require("./globalStyles/main.css");
+
+if (browser.gecko) {
+  window.alert(
+    "WARNING: Firefox currently has a buggy Web Audio API implementation which causes loud pops and clicks, continue at your own risk"
+  );
+}
+
 const Sequencer = Loadable({
   loader: () => import("./sequencer"),
   loading: () => null,
@@ -52,6 +67,7 @@ class App extends React.Component {
       <Provider store={store}>
         <div style={{ width: "100%", height: "100%" }}>
           <Sequencer />
+          <AppLayout />
         </div>
       </Provider>
     );
