@@ -2,7 +2,7 @@
 import React from "react";
 import Radium from "radium";
 
-import { grey, slightlyDarkerBlack } from "../../theme/variables";
+import { grey } from "../../theme/variables";
 import { labelGreyLarge, autoCursor } from "../../theme/mixins";
 import BottomSection from "../bottomSection";
 
@@ -21,7 +21,6 @@ const BOTTOM_HEIGHT = APP_HEIGHT - TOP_HEIGHT - TOP_BOTTOM_DIVIDER_HEIGHT * 2;
 const INSTRUMENT_SEPERATOR_WIDTH = 1;
 
 const TOP_LEFT_WIDTH = Math.ceil(APP_WIDTH * 0.23) - INSTRUMENT_SEPERATOR_WIDTH;
-const TOP_RIGHT_WIDTH = APP_WIDTH - TOP_LEFT_WIDTH;
 
 const TOP_HORIZONTAL_SEPERATOR_HEIGHT = TOP_HEIGHT - 10;
 

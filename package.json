@@ -18,6 +18,7 @@
     "redux-localstorage": "1.0.0-rc5",
     "redux-localstorage-debounce": "^0.1.0",
     "redux-localstorage-filter": "^0.1.1",
+    "reselect": "^4.0.0",
     "seamless-immutable": "^7.1.4",
     "waaclock": "^0.5.3"
   },

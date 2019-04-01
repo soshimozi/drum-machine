@@ -8,6 +8,7 @@ import AudioCtxContext from "./audioCtxContext";
 // Web Audio Modules
 import Limiter from './synth/effects/limiter';
 import VCA from './synth/basics/vca';
+import stepTrigger from "./synth/stepTrigger";
 
 import { equalPower } from "./helpers";
 
@@ -59,7 +60,13 @@ class Sequencer extends React.Component {
     }
 
     // trigger here
-    console.log('trigger');
+    stepTrigger(
+      this.props.storeState,
+      deadline,
+      outputChain.outputGain,
+      clock,
+      audioCtx
+    );
 
     clock.setTimeout(() => {
       this.props.handleTick();
@@ -100,10 +107,11 @@ class Sequencer extends React.Component {
     // change tempo
     if (
       nextStoreState.playing &&
-      (nextStoreState.tempo !== prevStoreState.tempo ||
-        nextStoreState.fineTempo !== prevStoreState.fineTempo)
+      (nextStoreState.tempo !== prevStoreState.tempo /* ||
+        nextStoreState.fineTempo !== prevStoreState.fineTempo */)
     ) {
-      const newTempo = nextStoreState.tempo + nextStoreState.fineTempo;
+      
+      const newTempo = nextStoreState.tempo; // + nextStoreState.fineTempo;
 
       hasAudio &&
         clock.timeStretch(

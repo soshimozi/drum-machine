@@ -67,7 +67,7 @@ class VCO {
       case SQUARE:
         this.oscillator = audioCtx.createOscillator(audioCtx);
         this.oscillator.type = type;
-        this.oscillator.buffer.value = 440;
+        this.oscillator.frequency.value = 440;
         break;
       default:
         throw new Error(`Invalid oscillator type provided: ${type}`);

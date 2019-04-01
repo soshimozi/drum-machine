@@ -1,14 +1,20 @@
 
 
 import {
-  START_STOP_BUTTON_CLICK,
-  TICK
+  PLAY_PAUSE_BUTTON_CLICK,
+  TICK,
+  TEMPO_CHANGED
 } from "./actionTypes";
 
 export const onTick = () => ({
   type: TICK
 });
 
-export const onStartStopButtonClick = () => ({
-  type: START_STOP_BUTTON_CLICK
+export const onPlayPauseButtonClick = () => ({
+  type: PLAY_PAUSE_BUTTON_CLICK
+});
+
+export const onTempoChanged = value  => ({
+  type: TEMPO_CHANGED,
+  payload: value
 });

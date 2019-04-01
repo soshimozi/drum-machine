@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import Radium from "radium";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Button extends React.Component {
   static propTypes = {
     onClick: PropTypes.func,
     style: PropTypes.object,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    icon: PropTypes.object
   };
 
   constructor(props) {
@@ -19,12 +21,14 @@ class Button extends React.Component {
   }
 
   render() {
+    
     const {
       style,
-      children,
-      disabled = false,
+      icon,
+      disabled,
       onClick = () => {}
     } = this.props;
+    
     const styles = {
       button: {
         width: 80,
@@ -52,13 +56,13 @@ class Button extends React.Component {
 
         // disabled styles
         pointerEvents: disabled ? "none" : "auto",
-        opacity: disabled ? 0.5 : 1
+        opacity: disabled ? 0.5 : 1        
       }
     };
 
     return (
       <button style={[styles.button, style]} onClick={onClick}>
-        {children}
+        <FontAwesomeIcon icon={icon} />
       </button>
     );
   }

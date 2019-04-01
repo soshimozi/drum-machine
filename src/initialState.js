@@ -1,9 +1,23 @@
 import Immutable from "seamless-immutable";
 
+import {
+  BASS_DRUM
+} from "./store-constants";
+
+const initialInstrumentState = {
+  [BASS_DRUM]: {
+    level: 75,
+    tone: 50,
+    decay: 50,
+  }
+}
+
 export default Immutable({
-  steps: [0, 0, 0, 0],
+  steps: [1, 0, 1, 0, 1, 1, 1, 0],
   currentStep: 0,
   playing: false,
-  tempo: 135,
-  masterVolume: 70
+  tempo: 90,
+  masterVolume: 70,
+  instrumentState: initialInstrumentState
 });
+

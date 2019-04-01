@@ -13,7 +13,7 @@ import filter from "redux-localstorage-filter";
 import rootReducer from "./reducers";
 import initialState from "./initialState";
 
-//import { PERSISTANCE_FILTER } from "store-constants";
+import { PERSISTANCE_FILTER } from "./store-constants";
 
 const middleware = [];
 
@@ -28,6 +28,7 @@ mergePersistedState((initialState, persistedState) =>
 
 const storage = compose(
   transformState(null, Immutable),
+  filter(PERSISTANCE_FILTER),
   debounce(100)
 )(adapter(window.localStorage));
 
