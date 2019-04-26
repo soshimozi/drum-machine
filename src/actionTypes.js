@@ -1,3 +1,4 @@
 export const PLAY_PAUSE_BUTTON_CLICK = "PLAY_PAUSE_BUTTON_CLICK";
+export const STOP_BUTTON_CLICK = "STOP_BUTTON_CLICK";
 export const TICK = "TICK";
 export const TEMPO_CHANGED = "TEMPO_CHANGED";

@@ -1,4 +1,5 @@
 import {
+  STOP_BUTTON_CLICK,
   PLAY_PAUSE_BUTTON_CLICK,
   TICK,
   TEMPO_CHANGED
@@ -11,7 +12,7 @@ export default function(state, { type, payload }) {
     {
       let newState = state;
       console.log('payload: ', payload);
-      if(payload == "") payload = "0";
+      if(payload === "") payload = "0";
 
       let newTempo = parseInt(payload);
       if(newTempo < 1) {
@@ -36,14 +37,28 @@ export default function(state, { type, payload }) {
       });
     }
 
+    case STOP_BUTTON_CLICK:
+    {
+      let newState = state;
+      if (state.playing) {
+        newState = newState.merge({
+          currentStep: -1,
+        });
+      }
+
+      return newState.merge({
+        playing: false
+      });        
+    }
+
     case PLAY_PAUSE_BUTTON_CLICK:
     {
       let newState = state;
-      if (!state.playing) {
-        newState = newState.merge({
-          currentStep: -1
-        });
-      }
+      // if (!state.playing) {
+      //   newState = newState.merge({
+      //     currentStep: -1
+      //   });
+      // }
 
       return newState.merge({
         playing: !state.playing

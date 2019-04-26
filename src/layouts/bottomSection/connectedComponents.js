@@ -5,7 +5,8 @@ import { faPause } from '@fortawesome/free-solid-svg-icons';
 
 import {
   onPlayPauseButtonClick,
-  onTempoChanged
+  onTempoChanged,
+  onStopButtonClick
 } from "../../actionCreators";
 
 import AudioCtxContext from "../../audioCtxContext";
@@ -71,7 +72,7 @@ export const ConnectedStopButton = (() => {
   const mapDispatchToProps = (dispatch, { requestInit }) => ({
     onClick: () => {
       requestInit();
-      dispatch(onPlayPauseButtonClick());
+      dispatch(onStopButtonClick());
     },
   });
 
