@@ -1,15 +1,24 @@
 import {
-  BASS_DRUM
+  BASS_DRUM,
+  LOW_CONGA_LOW_TOM,
+  MID_CONGA_MID_TOM,
+  HI_CONGA_HI_TOM
 } from "../store-constants";
 
 import bassDrum from '../synth/drumModules/bassDrum';
+
+import tomConga from "synth/drumModules/tomConga";
 
 import VCA from "../synth/basics/vca";
 
 import stepSelector from "../selectors/step";
 
 const drumModuleMapping = [
-  [BASS_DRUM, bassDrum]
+  [BASS_DRUM, bassDrum],
+
+  [LOW_CONGA_LOW_TOM, tomConga("low")],
+  [MID_CONGA_MID_TOM, tomConga("mid")],
+  [HI_CONGA_HI_TOM, tomConga("high")], 
 ];
 
 /*
@@ -19,7 +28,12 @@ const drumModuleMapping = [
  * don't think it should cause to many issues
  */
 const previousTriggers = {
-  [BASS_DRUM]: null
+  [BASS_DRUM]: null,
+
+  [SNARE_DRUM]: null,
+  [LOW_CONGA_LOW_TOM]: null,
+  [MID_CONGA_MID_TOM]: null,
+  [HI_CONGA_HI_TOM]: null, 
 };
 
 export default function(storeState, deadline, destination, clock, audioCtx) {
@@ -46,10 +60,7 @@ export default function(storeState, deadline, destination, clock, audioCtx) {
         const prevModule = previousTriggers[drumID];
 
         prevModule.amplitude.cancelScheduledValues(audioCtx.currentTime);
-        prevModule.amplitude.setValueAtTime(
-          prevModule.amplitude.value,
-          audioCtx.currentTime
-        );
+        prevModule.amplitude.setValueAtTime(prevModule.amplitude.value, audioCtx.currentTime);
 
         prevModule.amplitude.linearRampToValueAtTime(0, deadline);
 
