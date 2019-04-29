@@ -3,12 +3,15 @@ import { connect } from "react-redux";
 
 import StepButton from "../../components/stepButton";
 import MuteButton from "../../components/muteButton";
+import Button from "../../components/button";
+import ChannelButton from "../../components/channelButton";
 
 import AudioCtxContext from "../../audioCtxContext";
 
 import {
   onStepButtonClick,
-  onMuteButtonClick
+  onMuteButtonClick,
+  onChannelButtonClick
 } from "../../actionCreators";
 
 import {IsActive, IsPlaying } from "../../selectors/stepButton";
@@ -65,6 +68,33 @@ export const ConnectedMuteButton = ((channelId) => {
     <AudioCtxContext.Consumer>
       {({ requestInit }) => (
         <ConnectedButton requestInit={requestInit} {...rootProps} />
+      )}
+    </AudioCtxContext.Consumer>
+  );
+
+});
+
+export const ConnectedChannelButton = ((channelId, letter) => {
+
+  const mapDispatchToProps = (dispatch, { requestInit }) => ({
+    onClick: () => {
+      requestInit();
+      dispatch(onChannelButtonClick(channelId));
+    }
+  });
+
+  const mapStateToProps = state => ({
+  });
+
+  const ConnectedButton = connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ChannelButton);
+
+  return rootProps => (
+    <AudioCtxContext.Consumer>
+      {({ requestInit }) => (
+        <ConnectedButton letter={letter} requestInit={requestInit} {...rootProps} />
       )}
     </AudioCtxContext.Consumer>
   );

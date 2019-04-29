@@ -6,7 +6,8 @@ import {
   STEP_BUTTON_CLICK,
   TICK,
   TEMPO_CHANGED,
-  MUTE_BUTTON_CLICK
+  MUTE_BUTTON_CLICK,
+  CHANNEL_BUTTON_CLICK
 } from "./actionTypes";
 
 export const onTick = () => ({
@@ -34,4 +35,9 @@ export const onMuteButtonClick = (instrumentId) => ({
 export const onStepButtonClick = (drumId, index) => ({
   type: STEP_BUTTON_CLICK,
   payload: {drumId, index}
+});
+
+export const onChannelButtonClick = (instrumentId) => ({
+  type: CHANNEL_BUTTON_CLICK,
+  payload: instrumentId
 });

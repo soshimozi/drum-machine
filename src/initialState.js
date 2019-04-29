@@ -5,6 +5,7 @@ import {
   LOW_CONGA_LOW_TOM,
   MID_CONGA_MID_TOM,
   HI_CONGA_HI_TOM, 
+  COWBELL,
   TRACK_COUNT,
   INSTRUMENT_COUNT
 } from "./store-constants";
@@ -31,7 +32,10 @@ const initialInstrumentState = {
     level: 75,
     tuning: 50,
     selector: 1,
-  }  
+  },
+  [COWBELL]: {
+    level: 75,
+  }    
 }
 
 const initialStepsState = (() => {

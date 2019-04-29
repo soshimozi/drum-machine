@@ -4,31 +4,37 @@ import {
   TICK,
   TEMPO_CHANGED,
   STEP_BUTTON_CLICK,
-  MUTE_BUTTON_CLICK
+  MUTE_BUTTON_CLICK,
+  CHANNEL_BUTTON_CLICK
 } from '../actionTypes';
-
-import stepClickReducer from "./stepClick";
-
 
 import { stepKey } from "../helpers";
 
 export default function(state, { type, payload }) {
   switch(type) {
-     case MUTE_BUTTON_CLICK: 
-     {
-        return state.setIn(["muting", payload], !state.muting[payload]);
-     }
-     
-     case STEP_BUTTON_CLICK:
-     {
-       const {
-         drumId,
-         index
-       } = payload;
 
-       const key = stepKey(
+    case CHANNEL_BUTTON_CLICK:
+    {
+      console.log('channel button clicked');
+      return state;
+    }
+
+     case MUTE_BUTTON_CLICK: 
+    {
+      console.log('mute button clicked');
+      return state.setIn(["muting", payload], !state.muting[payload]);
+    }
+     
+    case STEP_BUTTON_CLICK:
+    {
+      const {
         drumId,
         index
+      } = payload;
+
+      const key = stepKey(
+       drumId,
+       index
       );
 
       return state.setIn(["steps", key], !state.steps[key]);
@@ -37,7 +43,6 @@ export default function(state, { type, payload }) {
     case TEMPO_CHANGED:
     {
       let newState = state;
-      console.log('payload: ', payload);
       if(payload === "") payload = "0";
 
       let newTempo = parseInt(payload);
@@ -60,7 +65,6 @@ export default function(state, { type, payload }) {
 
       let measure = state.currentMeasure;
 
-      console.log('currentStep', state.currentStep);
       if(state.currentStep % 4 === 0) {
         measure = measure + 1;
       }
