@@ -24,17 +24,15 @@ class Input extends React.Component {
     const {
       style,
       value,
+      className,
+      size,
+      min,
+      max,
       onChange = () => {}
     } = this.props;
 
-    const styles = {
-      input: {
-        width: 55
-      }
-    };
-
     return (
-      <input type="text" value={value} style={[styles.input, style]} onChange={onChange} />
+      <input className={className} type="text" size={size} min={min} max={max} value={value} style={style} onChange={onChange} />
     );
   }
 }

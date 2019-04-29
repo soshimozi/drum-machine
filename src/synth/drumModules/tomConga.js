@@ -43,6 +43,8 @@ const parameterMap = {
 
 export default function(type) {
     return function(audioCtx, destination, time, { level, tuning, selector }) {
+      console.log('tomConga was called');
+      
         // parameters
         const {
             frequencies: [highFreq, lowFreq],

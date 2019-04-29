@@ -5,7 +5,11 @@ import {
   LOW_CONGA_LOW_TOM,
   MID_CONGA_MID_TOM,
   HI_CONGA_HI_TOM, 
+  TRACK_COUNT,
+  INSTRUMENT_COUNT
 } from "./store-constants";
+
+import { stepKey } from './helpers';
 
 const initialInstrumentState = {
   [BASS_DRUM]: {
@@ -30,11 +34,32 @@ const initialInstrumentState = {
   }  
 }
 
+const initialStepsState = (() => {
+  const steps = {};
+  for (let instrument = 0; instrument < INSTRUMENT_COUNT; instrument++) {
+    for (let step = 0; step < TRACK_COUNT; step++) {
+      const key = stepKey(instrument, step);
+      steps[key] = false;
+    }
+  }
+  return steps;
+})();
+
+const initialMuteState = (() => {
+  const muting = {};
+  for (let instrument = 0; instrument < INSTRUMENT_COUNT; instrument++) {
+      muting[instrument] = true;
+  }
+  return muting;
+})();
+
 export default Immutable({
-  steps: [1, 0, 1, 0, 1, 1, 1, 0],
-  currentStep: 0,
+  steps: initialStepsState,
+  muting: initialMuteState,
+  currentStep: -1,
+  currentMeasure: -1,
   playing: false,
-  tempo: 90,
+  tempo: 60,
   masterVolume: 70,
   instrumentState: initialInstrumentState
 });

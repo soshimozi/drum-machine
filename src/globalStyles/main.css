@@ -1,11 +1,11 @@
-@import url(http://fonts.googleapis.com/css?family=Ubuntu+Condensed);
+/* @import url(http://fonts.googleapis.com/css?family=Ubuntu+Condensed);
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
 
 html {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAMCAIAAADONVt5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAFZJREFUeNp0jsERgDAIBCFhtBq/FmH/1SjkAsSfwmM/t3MHH+dFRGOoE4Cz0ecEGJE0cZreheUN0WWPs8teWMw9LFguamHZ27KlZdVifrzy1ftjTQEGANlnIbKDjehfAAAAAElFTkSuQmCC);
-}
+} */
 
-body {
+/* body {
   font-family: 'Ubuntu', sans-serif;
   font-size: 16px;
   color: #C3C9D9;
@@ -39,7 +39,7 @@ article h1 {
   margin-bottom: 10px;
 }
 
-/* Sequencer styles */
+// Sequencer styles
 #transport, #trackmanager {
   margin-bottom: 20px;
 }
@@ -157,7 +157,7 @@ button.preview:before {
   width: 20px;
 }
 
-/* Sequence */
+// Sequence
 
 #sequence {
   width: 100%;
@@ -415,4 +415,4 @@ footer {
 
 footer a {
   color: #8B99BC;
-}
+} */

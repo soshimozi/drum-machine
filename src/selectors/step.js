@@ -6,6 +6,6 @@ import patternLengthSelector from "./patternLength";
 export default createSelector(
   [getCurrentStep, patternLengthSelector],
   (currentStep, patternLength) => {
-      return currentStep % patternLength;
+      return currentStep % 16;
   }
 );

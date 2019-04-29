@@ -12,3 +12,6 @@ export const PERSISTANCE_FILTER = [
   "tempo",
   "fineTempo"
 ];
+
+export const TRACK_COUNT = 16;
+export const INSTRUMENT_COUNT = 12;

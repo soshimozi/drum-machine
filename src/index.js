@@ -19,6 +19,7 @@ library.add(faStop, faPlay, faPause)
 
 require("./globalStyles/reset.css");
 require("./globalStyles/main.css");
+require("./globalStyles/synth.scss");
 
 if (browser.gecko) {
   window.alert(
@@ -35,10 +36,8 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <div style={{ width: "100%", height: "100%" }}>
-          <Sequencer />
-          <AppLayout />
-        </div>
+        <Sequencer />
+        <AppLayout />
       </Provider>
     );
   }

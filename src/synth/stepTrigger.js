@@ -7,11 +7,13 @@ import {
 
 import bassDrum from '../synth/drumModules/bassDrum';
 
-import tomConga from "synth/drumModules/tomConga";
+import tomConga from "../synth/drumModules/tomConga";
 
 import VCA from "../synth/basics/vca";
 
 import stepSelector from "../selectors/step";
+
+import { stepKey } from "../helpers";
 
 const drumModuleMapping = [
   [BASS_DRUM, bassDrum],
@@ -30,7 +32,6 @@ const drumModuleMapping = [
 const previousTriggers = {
   [BASS_DRUM]: null,
 
-  [SNARE_DRUM]: null,
   [LOW_CONGA_LOW_TOM]: null,
   [MID_CONGA_MID_TOM]: null,
   [HI_CONGA_HI_TOM]: null, 
@@ -51,9 +52,17 @@ export default function(storeState, deadline, destination, clock, audioCtx) {
     deadline - audioCtx.currentTime + 2000
   );  
 
+  console.log('currentStep', currentStep);
   drumModuleMapping.forEach(([drumID, drumModuleTrigger]) => {
 
-    if (storeState.steps[currentStep]) {
+    const stepID = stepKey(
+      drumID,
+      currentStep
+    );      
+
+    console.log(stepID);
+
+    if (storeState.steps[stepID] && storeState.muting[drumID]) {
 
       // set gain on previous triggers to zero
       if(previousTriggers[drumID] != null) {
@@ -64,8 +73,8 @@ export default function(storeState, deadline, destination, clock, audioCtx) {
 
         prevModule.amplitude.linearRampToValueAtTime(0, deadline);
 
-         // remove reference from cache to let the garbage collector know to clean it up
-         previousTriggers[drumID] = null;
+        // remove reference from cache to let the garbage collector know to clean it up
+        previousTriggers[drumID] = null;
       }
 
       const drumState = storeState.instrumentState[drumID];

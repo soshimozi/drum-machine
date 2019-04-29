@@ -1,3 +1,7 @@
+export function stepKey(instrument, step) {
+  return `INSTRUMENT_${instrument}-STEP_${step}`;
+}
+
 export function snap(number, increment, offset) {
   return Math.round(number / increment) * increment + offset;
 }
