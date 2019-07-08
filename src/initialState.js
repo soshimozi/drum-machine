@@ -2,10 +2,16 @@ import Immutable from "seamless-immutable";
 
 import {
   BASS_DRUM,
+  SNARE_DRUM,
   LOW_CONGA_LOW_TOM,
   MID_CONGA_MID_TOM,
-  HI_CONGA_HI_TOM, 
+  HI_CONGA_HI_TOM,
+  CLAVES_RIMSHOT,
+  MARACAS_HANDCLAP,
   COWBELL,
+  CYMBAL,
+  OPEN_HIHAT,
+  CLSD_HIHAT,
   TRACK_COUNT,
   INSTRUMENT_COUNT
 } from "./store-constants";
@@ -17,6 +23,11 @@ const initialInstrumentState = {
     level: 75,
     tone: 50,
     decay: 50,
+  },
+  [SNARE_DRUM]: {
+    level: 75,
+    tone: 50,
+    snappy: 50,
   },
   [LOW_CONGA_LOW_TOM]: {
     level: 75,
@@ -33,9 +44,29 @@ const initialInstrumentState = {
     tuning: 50,
     selector: 1,
   },
+  [CLAVES_RIMSHOT]: {
+    level: 75,
+    selector: 1,
+  },
+  [MARACAS_HANDCLAP]: {
+    level: 75,
+    selector: 1,
+  },
   [COWBELL]: {
     level: 75,
-  }    
+  },
+  [CYMBAL]: {
+    level: 75,
+    tone: 50,
+    decay: 50,
+  },
+  [OPEN_HIHAT]: {
+    level: 75,
+    decay: 50,
+  },
+  [CLSD_HIHAT]: {
+    level: 75,
+  },
 }
 
 const initialStepsState = (() => {

@@ -1,15 +1,22 @@
 import {
   BASS_DRUM,
+  SNARE_DRUM,
   LOW_CONGA_LOW_TOM,
   MID_CONGA_MID_TOM,
   HI_CONGA_HI_TOM,
-  COWBELL
+  CLAVES_RIMSHOT,
+  MARACAS_HANDCLAP,
+  COWBELL,
+  CYMBAL,
+  OPEN_HIHAT,
+  CLSD_HIHAT
 } from "../store-constants";
 
 // drum modules
 import bassDrum from './drumModules/bassDrum';
 import tomConga from "./drumModules/tomConga";
 import cowbell from "./drumModules/cowbell";
+import cymbal from "./drumModules/cymbal";
 
 import VCA from "./basics/vca";
 
@@ -25,7 +32,8 @@ const drumModuleMapping = [
   [LOW_CONGA_LOW_TOM, tomConga("low")],
   [MID_CONGA_MID_TOM, tomConga("mid")],
   [HI_CONGA_HI_TOM, tomConga("high")], 
-  [COWBELL, cowbell]
+  [COWBELL, cowbell],
+  [CYMBAL, cymbal]
 ];
 
 /*
@@ -40,7 +48,8 @@ const previousTriggers = {
   [LOW_CONGA_LOW_TOM]: null,
   [MID_CONGA_MID_TOM]: null,
   [HI_CONGA_HI_TOM]: null, 
-  [COWBELL]: null
+  [COWBELL]: null,
+  [CYMBAL]: null
 };
 
 export default function(storeState, deadline, destination, clock, audioCtx) {

@@ -6,7 +6,8 @@ import {
   LOW_CONGA_LOW_TOM,
   MID_CONGA_MID_TOM,
   HI_CONGA_HI_TOM,
-  COWBELL
+  COWBELL,
+  CYMBAL
 } from "../../store-constants";
 
 import {
@@ -99,7 +100,18 @@ class SequencerSection extends React.Component {
             {SequencerSection.generateStepButtons(COWBELL)}
           </div>
         </div>
-        <div className="sep"></div>   
+        <div className="sep"></div>
+        <div className="channel">
+        {SequencerSection.generateMuteButton(CYMBAL)}
+          {SequencerSection.generateChannelButton(CYMBAL, 'Cy')}
+          <div className="control meter vertical">
+            <span className="fade" style={divOffStyle}></span>
+          </div>
+          <div className="seq-row inline">
+            {SequencerSection.generateStepButtons(CYMBAL)}
+          </div>
+        </div>
+        <div className="sep"></div>            
      </div>
     );
   }
